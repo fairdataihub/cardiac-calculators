@@ -126,7 +126,7 @@
 
     <n-collapse-transition :show="showOutput">
       <p class="text-2xl font-bold my-4">
-        The percentage of infarcted
+        The percentage of myocardial mass at risk of infarct relative to the
         {{ mode === "infarctArtery" ? "artery" : "heart" }} is
         {{ output.val }} %
       </p>
