@@ -3,10 +3,13 @@
     <h1>Cardiac Calculators</h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      Many mathematical formulas are used to guide decision making in cardiovascular healthcare. These include for
-      instance formulas to calculate the optimal diameter of a stent or the myocardial mass affected due to side
-      branch occlusion. Here, we provide interactive calculators so that anyone can use these formulas easily and quickly
-      without necessitating an understanding of the mathematical framework around them.
+      Many mathematical formulas are used to guide decision making in
+      cardiovascular healthcare. These include for instance formulas to
+      calculate the optimal diameter of a stent or the myocardial mass at risk
+      for infarct due to side branch occlusion. Here, we provide interactive
+      calculators so that anyone can use these formulas easily and quickly
+      without necessitating an understanding of the mathematical framework
+      around them.
     </p>
 
     <div>
@@ -21,8 +24,8 @@
           <n-space vertical>
             <h2 class="text-xl font-bold mb-4">Bi/Trifurcation Calculator</h2>
             <p class="mb-4">
-              To calculate the optimal stent diameter of a diseased artery segment in a bifurcation
-              or trifurcation.
+              To calculate the optimal stent diameter of a diseased artery
+              segment in a bifurcation or trifurcation.
             </p>
             <nuxt-link to="/bitrifurcation">
               <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -39,10 +42,11 @@
 
           <n-space vertical>
             <h2 class="text-xl font-bold mb-4">
-              At Risk Myocardial Mass Calculator
+              At-Risk Myocardial Mass Calculator
             </h2>
             <p class="mb-4">
-              To calculate the myocardial mass at risk for infarct is a side branch is occluded.
+              To calculate the myocardial mass at risk for infarct if a side
+              branch is occluded.
             </p>
             <nuxt-link to="/myocardialinfarct">
               <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
