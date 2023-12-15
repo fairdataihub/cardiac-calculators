@@ -1,5 +1,5 @@
 <template>
-  <NaiveConfig :katex="katex">
+  <NaiveConfig>
     <n-message-provider placement="bottom">
       <NuxtLayout>
         <NuxtLoadingIndicator color="#be185d" :height="5" />
@@ -10,12 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import katex from "katex";
-import "katex/dist/katex.css";
 import "vue3-lottie/dist/style.css";
 
 useHead({
-  title: "Bi/Trifurcation Calculator",
+  title: "Cardiac Calculators",
   link: [
     { href: "/favicon.ico", rel: "icon", type: "image/x-icon" },
     {
@@ -48,8 +46,7 @@ useHead({
   meta: [
     {
       name: "description",
-      content:
-        "Scholar Stack is an application to help you manage your dependencies with ease",
+      content: "A collection of cardiac calculators for the busy clinician.",
     },
     {
       name: "msapplication-TileColor",
@@ -58,6 +55,11 @@ useHead({
     {
       name: "theme-color",
       content: "#ffffff",
+    },
+    {
+      name: "og:image",
+      content:
+        "https://kalai.fairdataihub.org/api/generate?app=cardiac-calculators.com&title=Cardiac%20Calculators&org=fairdataihub&description=A%20collection%20of%20cardiac%20calculators%20for%20the%20busy%20clinician",
     },
   ],
 });

@@ -251,6 +251,25 @@
 import { useMessage, NAlert } from "naive-ui";
 import type { MessageRenderMessage } from "naive-ui";
 
+const title =
+  "Calculator for the optimal diameter of a diseased bi/tri-furcation";
+const description =
+  "When stenting a diseased artery segment in a bifurcation or trifurcation, it is important to ensure diameters that will achieve optimal blood flow to prevent risks of restenosis. The interface below allows the determination of the optimal diameter for a diseased segment knowing the diameters of the other two or three segments in a bifurcation or trifurcation, respectively";
+
+useHead({
+  title: "Bi/Trifurcation Calculator",
+  meta: [
+    {
+      name: "description",
+      content: description,
+    },
+    {
+      name: "og:image",
+      content: `https://kalai.fairdataihub.org/api/generate?app=cardiac-calculators.com&title=${title}&org=fairdataihub&description=${description}`,
+    },
+  ],
+});
+
 const message = useMessage();
 
 const unitOptions = [

@@ -1,33 +1,34 @@
 <template>
   <main class="text-gray-800 mt-8 pb-20 flex-grow">
     <h1>
-      Calculator for the relation of side branch diameter to perfused myocardial
-      mass
+      {{ title }}
     </h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      Explanatory text for the calculator
+      {{ description }}
     </p>
 
     <n-divider />
 
-    <h2 class="mb-4 font-medium">
-      Is the Infarct percentage relative to the entire heart?
-    </h2>
+    <n-space vertical>
+      <h2 class="font-medium">
+        Is the Infarct percentage relative to the entire heart?
+      </h2>
 
-    <n-radio-group
-      v-model:value="mode"
-      name="modeSelector"
-      size="large"
-      :on-update:value="resetCalculation"
-    >
-      <n-radio-button value="infarctArtery"> No </n-radio-button>
-      <n-radio-button value="infarctHeart"> Yes </n-radio-button>
-    </n-radio-group>
+      <n-radio-group
+        v-model:value="mode"
+        name="modeSelector"
+        size="large"
+        :on-update:value="resetCalculation"
+      >
+        <n-radio-button value="infarctArtery"> No </n-radio-button>
+        <n-radio-button value="infarctHeart"> Yes </n-radio-button>
+      </n-radio-group>
+    </n-space>
 
     <n-divider />
 
-    <div class="flex flex-col justify-start items-start">
+    <n-space vertical>
       <h2 class="font-medium">Provide the units used for the areas:</h2>
 
       <n-radio-group v-model:value="unit" name="unitSelector" size="large">
@@ -35,7 +36,7 @@
         <n-radio-button value="squarecm"> cm<sup>2</sup> </n-radio-button>
         <n-radio-button value="squarein"> in<sup>2</sup> </n-radio-button>
       </n-radio-group>
-    </div>
+    </n-space>
 
     <n-divider />
 
@@ -243,6 +244,26 @@
 <script setup lang="ts">
 import katex from "katex";
 import "katex/dist/katex.css";
+
+const title = "Percentage Infarct Calculator";
+const description =
+  "This calculator is used to determine the percentage of myocardial infarct.";
+
+useHead({
+  title: "Percentage Infarct Calculator",
+  meta: [
+    {
+      name: "description",
+      content: description,
+    },
+    {
+      name: "og:image",
+      content:
+        "https://kalai.fairdataihub.org/api/generate?app=cardiac-calculators.com&title=Percentage%20Infarct%20Calculator&org=fairdataihub&description=" +
+        description,
+    },
+  ],
+});
 
 const infarctArteryEq1 = ref("");
 const infarctArteryEq2 = ref("");
