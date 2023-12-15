@@ -128,7 +128,7 @@
       <p class="text-2xl font-bold my-4">
         The percentage of myocardial mass at risk of infarct relative to the
         {{ mode === "infarctArtery" ? "artery" : "heart" }} is
-        {{ output.val }} %
+        {{ output.val }}%
       </p>
 
       <n-divider />
@@ -164,7 +164,7 @@
           <div class="h-[2px] w-full my-4 bg-black"></div>
 
           <p class="text-2xl md:text-3xl font-semibold">
-            %Infarct<sub>artery</sub> = {{ output.val }} %
+            %Infarct<sub>artery</sub> = {{ output.val }}%
           </p>
         </div>
 
@@ -173,7 +173,7 @@
           <span v-html="infarctHeartEq2"></span>
 
           <p class="text-2xl md:text-3xl font-semibold">
-            %Infarct<sub>heart</sub> = {{ output.val }} %
+            %Infarct<sub>heart</sub> = {{ output.val }}%
           </p>
         </div>
       </div>
