@@ -4,11 +4,16 @@
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
       When stenting a diseased artery segment in a bifurcation or trifurcation,
-      it is important to ensure diameters that will achieve optimal blood flow
-      to prevent risks of restenosis. The interface below allows the
-      determination of the optimal diameter for a diseased segment knowing the
+      it is important to achieve a diameter that will achieve optimal blood flow
+      to prevent risks of restenosis. The interface below allows to calculate the optimal diameter that a diseased segment
+      should have after stenting knowing the
       diameters of the other two or three segments in a bifurcation or
-      trifurcation, respectively.
+      trifurcation, respectively. This
+      calculator is based on the Huo-Kassab (HK) model
+      <a href="https://doi.org/10.4244/EIJV7I11A206" target="_blank" rel="noopener"
+        class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
+        [1]
+      </a>
     </p>
 
     <n-divider />
@@ -18,12 +23,7 @@
       bifurcation or a trifurcation?
     </h2>
 
-    <n-radio-group
-      v-model:value="mode"
-      name="modeSelector"
-      size="large"
-      :on-update:value="resetCalculation"
-    >
+    <n-radio-group v-model:value="mode" name="modeSelector" size="large" :on-update:value="resetCalculation">
       <n-radio-button value="bifurcation"> Bifurcation </n-radio-button>
       <n-radio-button value="trifurcation"> Trifurcation </n-radio-button>
     </n-radio-group>
@@ -32,12 +32,7 @@
 
     <div class="flex flex-col justify-start items-start">
       <h2 class="font-medium">Provide the units used for the diameters:</h2>
-      <n-select
-        v-model:value="unit"
-        :options="unitOptions"
-        class="w-[150px] mt-4"
-        size="large"
-      />
+      <n-select v-model:value="unit" :options="unitOptions" class="w-[150px] mt-4" size="large" />
     </div>
 
     <n-divider />
@@ -57,82 +52,45 @@
       </p>
 
       <p class="text-base text-slate-600 font-normal">
-        D<sub>1</sub>, D<sub>2</sub
-        ><span v-if="mode === 'trifurcation'">, D<sub>3</sub></span> - Diameter
+        D<sub>1</sub>, D<sub>2</sub><span v-if="mode === 'trifurcation'">, D<sub>3</sub></span> - Diameter
         of the daughter segments
       </p>
     </div>
 
-    <div
-      class="flex lg:flex-row flex-col-reverse lg:justify-start lg:items-start"
-    >
+    <div class="flex lg:flex-row flex-col-reverse lg:justify-start lg:items-start">
       <div class="flex flex-col">
         <div class="flex flex-row items-center space-x-4 my-4">
           <p class="text-xl font-medium w-[30px]">D<sub>m</sub></p>
-          <n-input-number
-            v-model:value="dm"
-            clearable
-            :placeholder="placeholder"
-            :disabled="disableInput && (dm === undefined || dm === null)"
-            size="large"
-            :on-change="hideOutput"
-          />
+          <n-input-number v-model:value="dm" clearable :placeholder="placeholder"
+            :disabled="disableInput && (dm === undefined || dm === null)" size="large" :on-change="hideOutput" />
           <p class="text-lg font-normal w-[50px]">{{ unit }}</p>
         </div>
 
         <div class="flex flex-row items-center space-x-4 my-4">
           <p class="text-xl font-medium w-[30px]">D<sub>1</sub></p>
-          <n-input-number
-            v-model:value="d1"
-            clearable
-            :placeholder="placeholder"
-            :disabled="disableInput && (d1 === undefined || d1 === null)"
-            size="large"
-            :on-change="hideOutput"
-          />
+          <n-input-number v-model:value="d1" clearable :placeholder="placeholder"
+            :disabled="disableInput && (d1 === undefined || d1 === null)" size="large" :on-change="hideOutput" />
           <p class="text-lg font-normal w-[50px]">{{ unit }}</p>
         </div>
 
         <div class="flex flex-row items-center space-x-4 my-4">
           <p class="text-xl font-medium w-[30px]">D<sub>2</sub></p>
-          <n-input-number
-            v-model:value="d2"
-            clearable
-            :placeholder="placeholder"
-            :disabled="disableInput && (d2 === undefined || d2 === null)"
-            size="large"
-            :on-change="hideOutput"
-          />
+          <n-input-number v-model:value="d2" clearable :placeholder="placeholder"
+            :disabled="disableInput && (d2 === undefined || d2 === null)" size="large" :on-change="hideOutput" />
           <p class="text-lg font-normal w-[50px]">{{ unit }}</p>
         </div>
 
-        <div
-          class="flex flex-row items-center space-x-4 my-4"
-          v-if="mode === 'trifurcation'"
-        >
+        <div class="flex flex-row items-center space-x-4 my-4" v-if="mode === 'trifurcation'">
           <p class="text-xl font-medium w-[30px]">D<sub>3</sub></p>
-          <n-input-number
-            v-model:value="d3"
-            clearable
-            :placeholder="placeholder"
-            :disabled="disableInput && (d3 === undefined || d3 === null)"
-            size="large"
-            :on-change="hideOutput"
-          />
+          <n-input-number v-model:value="d3" clearable :placeholder="placeholder"
+            :disabled="disableInput && (d3 === undefined || d3 === null)" size="large" :on-change="hideOutput" />
           <p class="text-lg font-normal w-[50px]">{{ unit }}</p>
         </div>
 
         <div class="w-full flex my-6 justify-center">
-          <n-button
-            class=""
-            size="large"
-            type="primary"
-            :class="{
-              'animation-pulse': disableInput,
-            }"
-            @click="calculate"
-            :disabled="!disableInput"
-          >
+          <n-button class="" size="large" type="primary" :class="{
+            'animation-pulse': disableInput,
+          }" @click="calculate" :disabled="!disableInput">
             Calculate
           </n-button>
         </div>
@@ -140,16 +98,9 @@
 
       <div class="lg:ml-[200px] flex py-3" v-if="mode == 'bifurcation'">
         <n-image width="200" src="/images/bifurcation-1.svg" />
-        <n-image
-          width="250"
-          src="/images/bifurcation-2.svg"
-          class="ml-10 md:ml-20 lg:ml-[100px]"
-        />
+        <n-image width="250" src="/images/bifurcation-2.svg" class="ml-10 md:ml-20 lg:ml-[100px]" />
       </div>
-      <div
-        class="lg:ml-[200px] flex justify-center lg:justify-start py-3"
-        v-if="mode == 'trifurcation'"
-      >
+      <div class="lg:ml-[200px] flex justify-center lg:justify-start py-3" v-if="mode == 'trifurcation'">
         <n-image width="200" src="/images/trifurcation-1.svg" />
       </div>
     </div>
@@ -160,8 +111,7 @@
         <span>
           {{ output.label === "m" ? "mother" : "daughter" }} segment
         </span>
-        <span
-          >D<sub>{{ output.label }}</sub>
+        <span>D<sub>{{ output.label }}</sub>
         </span>
         to achieve optimum blood flow is {{ output.val }} {{ unit }}.
       </p>
@@ -174,38 +124,27 @@
         How is it calculated?
       </p>
 
-      <div
-        class="w-full p-4 md:p-8 flex flex-col items-center bg-amber-50 rounded-lg text-xl md:text-2xl font-medium"
-      >
+      <div class="w-full p-4 md:p-8 flex flex-col items-center bg-amber-50 rounded-lg text-xl md:text-2xl font-medium">
         <p class="reference" v-if="mode == 'bifurcation'">
           The diameter to achieve optimal blood flow in the bifurcation is
           calculated based on the Huo-Kassab (HK) model
-          <a
-            href="https://doi.org/10.4244/EIJV7I11A206"
-            target="_blank"
-            rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-          >
+          <a href="https://doi.org/10.4244/EIJV7I11A206" target="_blank" rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
             [1]
           </a>
         </p>
         <p class="reference" v-if="mode == 'trifurcation'">
           The diameter to achieve optimal blood flow in the trifurcation is
           calculated based on the Huo-Kassab (HK) model
-          <a
-            href="https://doi.org/10.4244/eijv11sva3"
-            target="_blank"
-            rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-          >
+          <a href="https://doi.org/10.4244/eijv11sva3" target="_blank" rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
             [2]
           </a>
         </p>
 
         <p class="my-3">
-          D<sub>m</sub><sup class="font-normal">7/3</sup> = D<sub>1</sub
-          ><sup class="font-normal">7/3</sup> + D<sub>2</sub
-          ><sup class="font-normal">7/3</sup>
+          D<sub>m</sub><sup class="font-normal">7/3</sup> = D<sub>1</sub><sup class="font-normal">7/3</sup> +
+          D<sub>2</sub><sup class="font-normal">7/3</sup>
           <span v-if="mode === 'trifurcation'">
             + D<sub>3</sub><sup class="font-normal">7/3</sup>
           </span>
@@ -220,8 +159,7 @@
           <span v-if="d1">
             {{ d1 }}
           </span>
-          <span v-else> D<sub>1</sub> </span
-          ><sup class="font-normal">7/3</sup> +
+          <span v-else> D<sub>1</sub> </span><sup class="font-normal">7/3</sup> +
           <span v-if="d2">
             {{ d2 }}
           </span>
