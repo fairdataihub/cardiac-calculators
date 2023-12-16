@@ -8,7 +8,7 @@
         rel="noopener"
         class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
       >
-        [1]</a
+        (Huo et al, 2012)</a
       >
     </h1>
 
@@ -184,26 +184,26 @@
       >
         <p class="reference" v-if="mode == 'bifurcation'">
           The diameter to achieve optimal blood flow in the bifurcation is
-          calculated based on the Huo-Kassab (HK) model
+          calculated based on the
           <a
             href="https://doi.org/10.4244/EIJV7I11A206"
             target="_blank"
             rel="noopener"
             class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
           >
-            [1]
+          Huo-Kassab (HK) model (2012)
           </a>
         </p>
         <p class="reference" v-if="mode == 'trifurcation'">
           The diameter to achieve optimal blood flow in the trifurcation is
-          calculated based on the Huo-Kassab (HK) model
+          calculated based on the
           <a
             href="https://doi.org/10.4244/eijv11sva3"
             target="_blank"
             rel="noopener"
             class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
           >
-            [2]
+          Huo-Kassab (HK) model (2012)
           </a>
         </p>
 

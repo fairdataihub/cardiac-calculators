@@ -3,12 +3,12 @@
     <h1>
       At-Risk Myocardial Mass Calculator
       <a
-        href="https://doi.org/10.4244/EIJV7I11A206"
+        href="https://doi.org/10.4244/eijv11sva3"
         target="_blank"
         rel="noopener"
         class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
       >
-        [2]</a
+        (Kassab et al, 2015)</a
       >
     </h1>
 
@@ -202,26 +202,26 @@
       >
         <p class="reference" v-if="mode == 'infarctArtery'">
           The percentage of myocardial mass relative to the artery is calculated
-          based on the relation established by Kassab et al.
-          <a
-            href="https://doi.org/10.4244/EIJV7I11A206"
-            target="_blank"
-            rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-          >
-            [2]
-          </a>
-        </p>
-        <p class="reference" v-if="mode == 'infarctHeart'">
-          The percentage of infarcted myocardial mass relative to the entire
-          heart is calculated based on the relation established by Kassab et al.
+          based on the relation established by
           <a
             href="https://doi.org/10.4244/eijv11sva3"
             target="_blank"
             rel="noopener"
             class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
           >
-            [2]
+          Kassab et al (2015)
+          </a>
+        </p>
+        <p class="reference" v-if="mode == 'infarctHeart'">
+          The percentage of infarcted myocardial mass relative to the entire
+          heart is calculated based on the relation established by
+          <a
+            href="https://doi.org/10.4244/eijv11sva3"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+          >
+          Kassab et al (2015)
           </a>
         </p>
 
