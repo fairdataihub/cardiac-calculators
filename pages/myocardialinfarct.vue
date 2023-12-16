@@ -13,14 +13,7 @@
     </h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      It is not uncommon to find elevation of biomarkers after coronary stenting
-      of a bifurcation as well as a potential increase in future risk of cardiac
-      events due to side branch occlusion. It is therefore important to know the
-      myocardial mass perfused, i.e. myocardial mass at risk for infarct, based
-      on the lumen area of a side branch. The interface below allows to
-      calculate the fraction of myocardial tissue at risk for infarct if the
-      side branch is occluded relatively to the artery and relatively to the
-      entire heart.
+      
     </p>
 
     <n-divider />
@@ -268,10 +261,10 @@ import "katex/dist/katex.css";
 
 const title = "At-Risk Myocardial Mass Calculator";
 const description =
-  "It is not uncommon to find elevation of biomarkers after coronary stenting of a bifurcation as well as a potential increase in future risk of cardiac events due to side branch occlusion. It is therefore important to know the myocardial mass perfused, i.e. myocardial mass at risk for infarct, based on the lumen area of a side branch. The interface below allows to calculate the fraction of myocardial tissue at risk for infarct if the side branch is occluded relatively to the artery and relatively to the entire heart. ";
+  "";
 
 useHead({
-  title: "Percentage Infarct Calculator",
+  title: "At-Risk Myocardial Mass Calculator",
   meta: [
     {
       name: "description",

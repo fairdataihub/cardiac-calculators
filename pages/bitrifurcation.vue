@@ -13,12 +13,7 @@
     </h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      When stenting a diseased artery segment in a bifurcation or trifurcation,
-      it is important to aim for a diameter that will achieve optimal blood flow
-      to prevent risks of restenosis. The interface below allows to calculate
-      the optimal diameter that a diseased segment should have after stenting
-      knowing the diameters of the other two or three segments in a bifurcation
-      or trifurcation, respectively.
+      
     </p>
 
     <n-divider />
