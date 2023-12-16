@@ -1,31 +1,48 @@
 <template>
   <main class="text-gray-800 mt-8 pb-20 flex-grow">
     <h1>
-      {{ title }}
+      At-Risk Myocardial Mass Calculator
+      <a
+        href="https://doi.org/10.4244/EIJV7I11A206"
+        target="_blank"
+        rel="noopener"
+        class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+      >
+        [2]</a
+      >
     </h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      It is not uncommon to find elevation of biomarkers after coronary stenting of a bifurcation as well as a potential
-      increase in future risk of cardiac events due to side branch occlusion. It is therefore important to know the
-      myocardial mass perfused, i.e. myocardial mass at risk for infarct, based on the lumen area of a side branch. The
-      interface below allows to calculate the fraction of myocardial tissue at risk for infarct if the side branch is
-      occluded relatively to the artery and relatively to the entire heart. This calculator is based on the relation
-      established by Kassab et al.
-      <a href="https://doi.org/10.4244/EIJV7I11A206" target="_blank" rel="noopener"
-        class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
-        [2]</a>.
+      It is not uncommon to find elevation of biomarkers after coronary stenting
+      of a bifurcation as well as a potential increase in future risk of cardiac
+      events due to side branch occlusion. It is therefore important to know the
+      myocardial mass perfused, i.e. myocardial mass at risk for infarct, based
+      on the lumen area of a side branch. The interface below allows to
+      calculate the fraction of myocardial tissue at risk for infarct if the
+      side branch is occluded relatively to the artery and relatively to the
+      entire heart.
     </p>
 
     <n-divider />
 
     <n-space vertical>
       <h2 class="font-medium">
-        Do you want to calculate the percent infarct mass relative to the artery or relative to the entire heart?
+        Do you want to calculate the percent infarct mass relative to the artery
+        or relative to the entire heart?
       </h2>
 
-      <n-radio-group v-model:value="mode" name="modeSelector" size="large" :on-update:value="resetCalculation">
-        <n-radio-button value="infarctArtery"> Relative to artery </n-radio-button>
-        <n-radio-button value="infarctHeart"> Relative to entire heart </n-radio-button>
+      <n-radio-group
+        v-model:value="mode"
+        name="modeSelector"
+        size="large"
+        :on-update:value="resetCalculation"
+      >
+        <n-radio-button value="infarctArtery">
+          Relative to artery
+        </n-radio-button>
+        <n-radio-button value="infarctHeart">
+          Relative to entire heart
+        </n-radio-button>
       </n-radio-group>
     </n-space>
 
@@ -52,25 +69,42 @@
         coronary artery:
       </h2>
 
-      <p class="text-base text-slate-600 font-normal" v-if="mode === 'infarctArtery'">
+      <p
+        class="text-base text-slate-600 font-normal"
+        v-if="mode === 'infarctArtery'"
+      >
         A<sub>MA</sub> - Lumen area of the main artery
       </p>
       <p class="text-base text-slate-600 font-normal">
         A<sub>SB</sub> - Lumen area of the side branch
       </p>
-      <p class="text-base text-slate-600 font-normal" v-if="mode === 'infarctHeart'">
+      <p
+        class="text-base text-slate-600 font-normal"
+        v-if="mode === 'infarctHeart'"
+      >
         A<sub>LCCA</sub> - Lumen area of the left coronary artery
       </p>
-      <p class="text-base text-slate-600 font-normal" v-if="mode === 'infarctHeart'">
+      <p
+        class="text-base text-slate-600 font-normal"
+        v-if="mode === 'infarctHeart'"
+      >
         A<sub>RCA</sub> - Lumen area of the right coronary artery
       </p>
     </div>
 
-    <div class="flex lg:flex-row flex-col-reverse lg:justify-start lg:items-start">
+    <div
+      class="flex lg:flex-row flex-col-reverse lg:justify-start lg:items-start"
+    >
       <div class="flex flex-col">
         <div class="flex flex-row items-center space-x-4 my-4">
           <p class="text-xl font-medium w-[120px]">A<sub>SB</sub></p>
-          <n-input-number v-model:value="aSB" clearable :placeholder="placeholder" size="large" :on-change="hideOutput" />
+          <n-input-number
+            v-model:value="aSB"
+            clearable
+            :placeholder="placeholder"
+            size="large"
+            :on-change="hideOutput"
+          />
           <p class="text-lg font-normal w-[50px]">
             <span v-if="unit === 'squaremm'">mm<sup>2</sup></span>
             <span v-if="unit === 'squarecm'">cm<sup>2</sup></span>
@@ -78,9 +112,18 @@
           </p>
         </div>
 
-        <div class="flex flex-row items-center space-x-4 my-4" v-if="mode === 'infarctArtery'">
+        <div
+          class="flex flex-row items-center space-x-4 my-4"
+          v-if="mode === 'infarctArtery'"
+        >
           <p class="text-xl font-medium w-[120px]">A<sub>MA</sub></p>
-          <n-input-number v-model:value="aMA" clearable :placeholder="placeholder" size="large" :on-change="hideOutput" />
+          <n-input-number
+            v-model:value="aMA"
+            clearable
+            :placeholder="placeholder"
+            size="large"
+            :on-change="hideOutput"
+          />
           <p class="text-lg font-normal w-[50px]">
             <span v-if="unit === 'squaremm'">mm<sup>2</sup></span>
             <span v-if="unit === 'squarecm'">cm<sup>2</sup></span>
@@ -88,10 +131,18 @@
           </p>
         </div>
 
-        <div class="flex flex-row items-center space-x-4 my-4" v-if="mode === 'infarctHeart'">
+        <div
+          class="flex flex-row items-center space-x-4 my-4"
+          v-if="mode === 'infarctHeart'"
+        >
           <p class="text-xl font-medium w-[120px]">A<sub>LCCA</sub></p>
-          <n-input-number v-model:value="aLCCA" clearable :placeholder="placeholder" size="large"
-            :on-change="hideOutput" />
+          <n-input-number
+            v-model:value="aLCCA"
+            clearable
+            :placeholder="placeholder"
+            size="large"
+            :on-change="hideOutput"
+          />
           <p class="text-lg font-normal w-[50px]">
             <span v-if="unit === 'squaremm'">mm<sup>2</sup></span>
             <span v-if="unit === 'squarecm'">cm<sup>2</sup></span>
@@ -99,10 +150,18 @@
           </p>
         </div>
 
-        <div class="flex flex-row items-center space-x-4 my-4" v-if="mode === 'infarctHeart'">
+        <div
+          class="flex flex-row items-center space-x-4 my-4"
+          v-if="mode === 'infarctHeart'"
+        >
           <p class="text-xl font-medium w-[120px]">A<sub>RCA</sub></p>
-          <n-input-number v-model:value="aRCA" clearable :placeholder="placeholder" size="large"
-            :on-change="hideOutput" />
+          <n-input-number
+            v-model:value="aRCA"
+            clearable
+            :placeholder="placeholder"
+            size="large"
+            :on-change="hideOutput"
+          />
           <p class="text-lg font-normal w-[50px]">
             <span v-if="unit === 'squaremm'">mm<sup>2</sup></span>
             <span v-if="unit === 'squarecm'">cm<sup>2</sup></span>
@@ -111,9 +170,16 @@
         </div>
 
         <div class="w-full flex my-6 justify-center">
-          <n-button class="" size="large" type="primary" :class="{
-            'animation-pulse': !disableButton && !showOutput,
-          }" @click="calculate" :disabled="disableButton">
+          <n-button
+            class=""
+            size="large"
+            type="primary"
+            :class="{
+              'animation-pulse': !disableButton && !showOutput,
+            }"
+            @click="calculate"
+            :disabled="disableButton"
+          >
             Calculate
           </n-button>
         </div>
@@ -127,8 +193,7 @@
     <n-collapse-transition :show="showOutput">
       <p class="text-2xl font-bold my-4">
         The percentage of myocardial mass at risk of infarct relative to the
-        {{ mode === "infarctArtery" ? "artery" : "heart" }} is
-        {{ output.val }}%
+        {{ mode === "infarctArtery" ? "artery" : "heart" }} is {{ output.val }}%
       </p>
 
       <n-divider />
@@ -139,25 +204,38 @@
         How is it calculated?
       </p>
 
-      <div class="w-full p-4 md:p-8 flex flex-col items-center bg-amber-50 rounded-lg text-xl md:text-2xl font-medium">
+      <div
+        class="w-full p-4 md:p-8 flex flex-col items-center bg-amber-50 rounded-lg text-xl md:text-2xl font-medium"
+      >
         <p class="reference" v-if="mode == 'infarctArtery'">
-          The percentage of myocardial mass relative to the artery is calculated based on the relation established by
-          Kassab et al.
-          <a href="https://doi.org/10.4244/EIJV7I11A206" target="_blank" rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
+          The percentage of myocardial mass relative to the artery is calculated
+          based on the relation established by Kassab et al.
+          <a
+            href="https://doi.org/10.4244/EIJV7I11A206"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+          >
             [2]
           </a>
         </p>
         <p class="reference" v-if="mode == 'infarctHeart'">
-          The percentage of infarcted myocardial mass relative to the entire heart is calculated based on the relation
-          established by Kassab et al.
-          <a href="https://doi.org/10.4244/eijv11sva3" target="_blank" rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline">
+          The percentage of infarcted myocardial mass relative to the entire
+          heart is calculated based on the relation established by Kassab et al.
+          <a
+            href="https://doi.org/10.4244/eijv11sva3"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+          >
             [2]
           </a>
         </p>
 
-        <div class="flex flex-col space-y-8 items-center" v-if="mode == 'infarctArtery'">
+        <div
+          class="flex flex-col space-y-8 items-center"
+          v-if="mode == 'infarctArtery'"
+        >
           <span v-html="infarctArteryEq1"></span>
           <span v-html="infarctArteryEq2"></span>
 
@@ -168,7 +246,10 @@
           </p>
         </div>
 
-        <div class="flex flex-col space-y-8 items-center" v-if="mode == 'infarctHeart'">
+        <div
+          class="flex flex-col space-y-8 items-center"
+          v-if="mode == 'infarctHeart'"
+        >
           <span v-html="infarctHeartEq1"></span>
           <span v-html="infarctHeartEq2"></span>
 
@@ -323,10 +404,10 @@ const calculate = () => {
 
     infarctArteryEq2.value = katex.renderToString(
       "\\% Infarct_{artery} = \\left(\\frac{" +
-      aSB.value +
-      "}{" +
-      aMA.value +
-      "}\\right)^{\\frac{4}{3}} \\times 100",
+        aSB.value +
+        "}{" +
+        aMA.value +
+        "}\\right)^{\\frac{4}{3}} \\times 100",
       {
         throwOnError: false,
       }
@@ -353,12 +434,12 @@ const calculate = () => {
 
     infarctHeartEq2.value = katex.renderToString(
       "\\% Infarct_{heart} = \\left(\\frac{" +
-      aSB.value +
-      "^{\\frac{4}{3}}}{(" +
-      aLCCA.value +
-      "^{\\frac{4}{3}} + " +
-      aRCA.value +
-      "^{\\frac{4}{3}})}\\right) \\times 100",
+        aSB.value +
+        "^{\\frac{4}{3}}}{(" +
+        aLCCA.value +
+        "^{\\frac{4}{3}} + " +
+        aRCA.value +
+        "^{\\frac{4}{3}})}\\right) \\times 100",
       {
         throwOnError: false,
       }

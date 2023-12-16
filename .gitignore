@@ -9,3 +9,7 @@ dist
 .DS_Store
 .fleet
 .idea
+.yarn
+.yarnrc.yml
+yarn.lock
+yarn.lock
