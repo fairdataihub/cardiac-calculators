@@ -47,15 +47,17 @@
         size="large"
         :on-update:value="resetRelativeUnitCalculation"
       >
-        <n-radio-button value="area"> Area </n-radio-button>
         <n-radio-button value="diameter"> Diameter </n-radio-button>
+        <n-radio-button value="area"> Area </n-radio-button>
       </n-radio-group>
     </n-space>
 
     <n-divider />
 
     <n-space vertical>
-      <h2 class="font-medium">Provide the units used for the areas:</h2>
+      <h2 class="font-medium">
+        Provide the units used for the {{ relativeUnitLabel }}s:
+      </h2>
 
       <n-radio-group v-model:value="unit" name="unitSelector" size="large">
         <n-radio-button value="squaremm">
@@ -358,7 +360,7 @@ onMounted(() => {
 });
 
 const mode = ref("infarctArtery");
-const relativeUnit = ref("area");
+const relativeUnit = ref("diameter");
 const unit = ref("squaremm");
 
 const vMA = ref();
@@ -388,6 +390,10 @@ const relativeArea = computed(() => {
     return false;
   }
 });
+
+const toFixedIfNecessary = (value: number, dp: number) => {
+  return +parseFloat(value.toFixed(dp));
+};
 
 const resetModeCalculation = (value: string) => {
   showOutput.value = false;
@@ -524,9 +530,9 @@ const calculate = () => {
 
     infarctArteryEq4.value = katex.renderToString(
       "\\% Infarct_{artery} = \\left(\\frac{" +
-        a1 +
+        toFixedIfNecessary(a1, 4) +
         "}{" +
-        a2 +
+        toFixedIfNecessary(a2, 4) +
         "}\\right)^{\\frac{4}{3}} \\times 100",
       {
         throwOnError: false,
@@ -588,11 +594,11 @@ const calculate = () => {
 
     infarctHeartEq4.value = katex.renderToString(
       "\\% Infarct_{heart} = \\left(\\frac{" +
-        a1 +
+        toFixedIfNecessary(a1, 4) +
         "^{\\frac{4}{3}}}{" +
-        a2 +
+        toFixedIfNecessary(a2, 4) +
         "^{\\frac{4}{3}} + " +
-        a3 +
+        toFixedIfNecessary(a3, 4) +
         "^{\\frac{4}{3}}}\\right) \\times 100",
       {
         throwOnError: false,
