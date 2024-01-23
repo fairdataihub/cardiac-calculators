@@ -1,14 +1,18 @@
 <template>
   <main class="text-gray-800 mt-8 pb-20 flex-grow">
-    <h1>
-      At-Risk Myocardial Mass Calculator (<a
-        href="https://doi.org/10.4244/eijv8i12a220"
-        target="_blank"
-        rel="noopener"
-        class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-        >Kassab et al, 2013</a
-      >)
-    </h1>
+    <n-page-header @back="handleBack">
+      <template #title>
+        <h1>
+          At-Risk Myocardial Mass Calculator (<a
+            href="https://doi.org/10.4244/eijv8i12a220"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+            >Kassab et al, 2013</a
+          >)
+        </h1>
+      </template>
+    </n-page-header>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600"></p>
 
@@ -390,6 +394,10 @@ const relativeArea = computed(() => {
     return false;
   }
 });
+
+const handleBack = async () => {
+  await navigateTo("/");
+};
 
 const toFixedIfNecessary = (value: number, dp: number) => {
   return +parseFloat(value.toFixed(dp));

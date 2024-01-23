@@ -1,27 +1,27 @@
 <template>
   <main class="text-gray-800 mt-8 pb-20 flex-grow">
-    <h1>
-      Calculator for the optimal diameter of a diseased bi/tri-furcation (<a
-        href="https://doi.org/10.4244/EIJV7I11A206"
-        target="_blank"
-        rel="noopener"
-        class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-        >Huo et al, 2012</a
-      >
-      &
-      <a
-        href="https://doi.org/10.4244/EIJV11SVA3"
-        target="_blank"
-        rel="noopener"
-        class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-      >
-        Kassab et al, 2015</a
-      >)
-    </h1>
-
-    <p class="text-base md:text-lg font-normal mt-3 text-slate-600"></p>
-
-    <n-divider />
+    <n-page-header @back="handleBack">
+      <template #title>
+        <h1>
+          Calculator for the optimal diameter of a diseased bi/tri-furcation (<a
+            href="https://doi.org/10.4244/EIJV7I11A206"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+            >Huo et al, 2012</a
+          >
+          &
+          <a
+            href="https://doi.org/10.4244/EIJV11SVA3"
+            target="_blank"
+            rel="noopener"
+            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+          >
+            Kassab et al, 2015</a
+          >)
+        </h1>
+      </template>
+    </n-page-header>
 
     <h2 class="mb-4 font-medium">
       Do you want to calculate the optimal diameter of a diseased segment in a
@@ -311,6 +311,10 @@ const output = ref({
   label: "",
   val: "",
 });
+
+const handleBack = async () => {
+  await navigateTo("/");
+};
 
 const resetCalculation = (value: string) => {
   showOutput.value = false;
