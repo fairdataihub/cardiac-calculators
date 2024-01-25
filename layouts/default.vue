@@ -1,14 +1,15 @@
 <template>
   <div
-    class="relative mx-auto flex h-screen w-full flex-col px-8"
+    class="relative mx-auto flex h-screen w-full flex-col"
     :class="{ 'debug-screens': devMode }"
   >
     <n-back-top />
 
-    <nav class="bg-white border-gray-200">
-      <div class="flex flex-wrap items-center justify-end mx-auto p-4">
+    <nav class="border-gray-200 border-b bg-slate-50/50 md:px-8">
+      <div class="flex flex-wrap items-center justify-start mx-auto p-4">
         <button
           data-collapse-toggle="navbar-default"
+          @click="navCollapsed = !navCollapsed"
           type="button"
           class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400"
           aria-controls="navbar-default"
@@ -31,7 +32,11 @@
             />
           </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <div
+          class="w-full md:block md:w-auto"
+          id="navbar-default"
+          :class="{ hidden: navCollapsed }"
+        >
           <ul
             class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
           >
@@ -72,7 +77,9 @@
       </div>
     </nav>
 
-    <slot />
+    <div class="relative mx-auto w-full h-screen max-w-screen-xl px-8">
+      <slot />
+    </div>
 
     <footer
       class="flex h-24 w-full items-center border-t bg-white p-4 flex-col md:flex-row md:items-center md:justify-between md:p-6"
@@ -115,4 +122,6 @@
 
 <script setup>
 const devMode = process.env.NODE_ENV === "development";
+const { isMobile } = useDevice();
+const navCollapsed = ref(isMobile ? true : false);
 </script>

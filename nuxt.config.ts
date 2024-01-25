@@ -14,7 +14,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@bg-dev/nuxt-naiveui", "@nuxtjs/tailwindcss", "nuxt-icon"],
+  modules: [
+    "@bg-dev/nuxt-naiveui",
+    "@nuxtjs/tailwindcss",
+    "nuxt-icon",
+    "@nuxtjs/device",
+  ],
 
   naiveui: {
     colorModePreference: "light",
