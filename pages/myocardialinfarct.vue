@@ -1,18 +1,14 @@
 <template>
   <main class="text-gray-800 mt-8 pb-20 flex-grow">
-    <n-page-header @back="handleBack">
-      <template #title>
-        <h1>
-          At-Risk Myocardial Mass Calculator (<a
-            href="https://doi.org/10.4244/eijv8i12a220"
-            target="_blank"
-            rel="noopener"
-            class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
-            >Kassab et al, 2013</a
-          >)
-        </h1>
-      </template>
-    </n-page-header>
+    <h1>
+      At-Risk Myocardial Mass Calculator (<a
+        href="https://doi.org/10.4244/eijv8i12a220"
+        target="_blank"
+        rel="noopener"
+        class="text-blue-400 hover:text-blue-600 transition-all hover:underline"
+        >Kassab et al, 2013</a
+      >)
+    </h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600"></p>
 
@@ -51,17 +47,15 @@
         size="large"
         :on-update:value="resetRelativeUnitCalculation"
       >
-        <n-radio-button value="diameter"> Diameter </n-radio-button>
         <n-radio-button value="area"> Area </n-radio-button>
+        <n-radio-button value="diameter"> Diameter </n-radio-button>
       </n-radio-group>
     </n-space>
 
     <n-divider />
 
     <n-space vertical>
-      <h2 class="font-medium">
-        Provide the units used for the {{ relativeUnitLabel }}s:
-      </h2>
+      <h2 class="font-medium">Provide the units used for the areas:</h2>
 
       <n-radio-group v-model:value="unit" name="unitSelector" size="large">
         <n-radio-button value="squaremm">
@@ -364,7 +358,7 @@ onMounted(() => {
 });
 
 const mode = ref("infarctArtery");
-const relativeUnit = ref("diameter");
+const relativeUnit = ref("area");
 const unit = ref("squaremm");
 
 const vMA = ref();
@@ -394,14 +388,6 @@ const relativeArea = computed(() => {
     return false;
   }
 });
-
-const handleBack = async () => {
-  await navigateTo("/");
-};
-
-const toFixedIfNecessary = (value: number, dp: number) => {
-  return +parseFloat(value.toFixed(dp));
-};
 
 const resetModeCalculation = (value: string) => {
   showOutput.value = false;
@@ -538,9 +524,9 @@ const calculate = () => {
 
     infarctArteryEq4.value = katex.renderToString(
       "\\% Infarct_{artery} = \\left(\\frac{" +
-        toFixedIfNecessary(a1, 4) +
+        a1 +
         "}{" +
-        toFixedIfNecessary(a2, 4) +
+        a2 +
         "}\\right)^{\\frac{4}{3}} \\times 100",
       {
         throwOnError: false,
@@ -602,11 +588,11 @@ const calculate = () => {
 
     infarctHeartEq4.value = katex.renderToString(
       "\\% Infarct_{heart} = \\left(\\frac{" +
-        toFixedIfNecessary(a1, 4) +
+        a1 +
         "^{\\frac{4}{3}}}{" +
-        toFixedIfNecessary(a2, 4) +
+        a2 +
         "^{\\frac{4}{3}} + " +
-        toFixedIfNecessary(a3, 4) +
+        a3 +
         "^{\\frac{4}{3}}}\\right) \\times 100",
       {
         throwOnError: false,
