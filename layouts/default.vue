@@ -1,11 +1,11 @@
 <template>
   <div
-    class="relative mx-auto flex h-screen w-full flex-col"
+    class="relative mx-auto min-h-screen w-full"
     :class="{ 'debug-screens': devMode }"
   >
     <n-back-top />
 
-    <nav class="border-gray-200 border-b bg-slate-50/50 md:px-8">
+    <nav class="border-gray-200 border-b bg-slate-50/50 md:px-8 relative">
       <div class="flex flex-wrap items-center justify-start mx-auto p-4">
         <button
           data-collapse-toggle="navbar-default"
@@ -81,17 +81,21 @@
       </div>
     </nav>
 
-    <div class="relative mx-auto w-full h-screen max-w-screen-xl px-8">
+    <div
+      class="relative mx-auto w-full h-full max-w-screen-xl px-8 pb-8 md:pb-16"
+    >
       <slot />
     </div>
 
     <footer
-      class="flex h-24 w-full items-center border-t bg-white p-4 flex-col md:flex-row md:items-center md:justify-between md:p-6"
+      class="flex h-24 w-full items-center border-t bg-white p-4 flex-col md:flex-row md:items-center md:justify-between md:p-6 absolute bottom-0"
     >
       <div
         class="flex flex-col items-center md:items-end text-sm font-medium text-slate-700"
       >
-        <p class="text-center">Made with ❤️ by the FAIR Data Innovations Hub</p>
+        <p class="text-center font-sans">
+          Made with ❤️ by the FAIR Data Innovations Hub
+        </p>
       </div>
 
       <div class="flex space-x-8 items-center mt-4 md:mt-0">

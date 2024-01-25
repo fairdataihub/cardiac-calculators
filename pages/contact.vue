@@ -1,6 +1,6 @@
 <template>
   <main
-    class="text-gray-800 h-screen px-4 py-8 md:py-0 mx-auto max-w-screen-md flex flex-col justify-center items-center my-auto"
+    class="text-gray-800 h-screen px-4 py-8 md:py-0 mx-auto max-w-screen-md flex flex-col md:justify-center items-center my-auto"
   >
     <div>
       <h2 class="mb-4 text-4xl font-bold text-center text-gray-900">
