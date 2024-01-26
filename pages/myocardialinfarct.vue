@@ -47,8 +47,8 @@
         size="large"
         :on-update:value="resetRelativeUnitCalculation"
       >
-        <n-radio-button value="area"> Area </n-radio-button>
         <n-radio-button value="diameter"> Diameter </n-radio-button>
+        <n-radio-button value="area"> Area </n-radio-button>
       </n-radio-group>
     </n-space>
 
