@@ -55,7 +55,9 @@
     <n-divider />
 
     <n-space vertical>
-      <h2 class="font-medium">Provide the units used for the areas:</h2>
+      <h2 class="font-medium">
+        Provide the units used for the {{ relativeUnitLabel }}s:
+      </h2>
 
       <n-radio-group v-model:value="unit" name="unitSelector" size="large">
         <n-radio-button value="squaremm">
@@ -358,7 +360,7 @@ onMounted(() => {
 });
 
 const mode = ref("infarctArtery");
-const relativeUnit = ref("area");
+const relativeUnit = ref("diameter");
 const unit = ref("squaremm");
 
 const vMA = ref();
