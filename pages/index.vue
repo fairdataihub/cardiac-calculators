@@ -3,13 +3,7 @@
     <h1>Cardiac Calculators</h1>
 
     <p class="text-base md:text-lg font-normal mt-3 text-slate-600">
-      Many mathematical formulas are used to guide decision making in
-      cardiovascular healthcare. These include for instance formulas to
-      calculate the optimal diameter of a stent or the myocardial mass at risk
-      for infarct due to side branch occlusion. Here, we provide interactive
-      calculators so that anyone can use these formulas easily and quickly
-      without necessitating an understanding of the mathematical framework
-      around them.
+      Mathematical formulas can be used to guide decision making in cardiovascular diagnosis and treatment. For example, there are formulas to calculate the optimal diameter of a coronary stent or the myocardial mass at risk for infarct due to side branch occlusion. Here, we provide interactive calculators so that the interventional cardiologist can use these formulas easily and in real time. The theory for these formulas can be found in the book “Coronary Circulation: Mechanobiology; Growth and Remodeling; and Clinical Implications. Springer, 2024” by G.S. Kassab.
     </p>
 
     <div>
